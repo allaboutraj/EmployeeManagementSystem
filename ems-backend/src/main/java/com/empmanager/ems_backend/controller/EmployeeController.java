@@ -16,6 +16,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PutMapping;
 
 @AllArgsConstructor
 @RestController
@@ -43,6 +44,14 @@ public class EmployeeController {
     public ResponseEntity<List<EmployeeDto>> getAllEmployees() {
         List<EmployeeDto> employees = employeeService.getAllEmployees();
         return ResponseEntity.ok(employees);
+    }
+
+    // Build Update Employee REST API
+    @PutMapping("/update/{id}")
+    public ResponseEntity<EmployeeDto> updateEmployee(@PathVariable("id") Long employeeId,
+            @RequestBody EmployeeDto updatedEmployeeDto) {
+        EmployeeDto employeeDto = employeeService.updateEmployee(employeeId, updatedEmployeeDto);
+        return ResponseEntity.ok(employeeDto);
     }
 
 }
