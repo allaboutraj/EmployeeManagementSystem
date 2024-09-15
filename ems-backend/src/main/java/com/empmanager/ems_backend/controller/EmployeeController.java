@@ -13,6 +13,8 @@ import com.empmanager.ems_backend.dto.EmployeeDto;
 import com.empmanager.ems_backend.service.EmployeeService;
 
 import lombok.AllArgsConstructor;
+
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -52,6 +54,13 @@ public class EmployeeController {
             @RequestBody EmployeeDto updatedEmployeeDto) {
         EmployeeDto employeeDto = employeeService.updateEmployee(employeeId, updatedEmployeeDto);
         return ResponseEntity.ok(employeeDto);
+    }
+
+    // Build delete REST API
+    @DeleteMapping("{id}")
+    public ResponseEntity<String> deleteEmployee(@PathVariable("id") Long employeeId) {
+        employeeService.deleteEmployee(employeeId);
+        return ResponseEntity.ok("Employee deleted successfully");
     }
 
 }
