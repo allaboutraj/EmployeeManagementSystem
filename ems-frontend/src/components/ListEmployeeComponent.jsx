@@ -48,7 +48,7 @@ const ListEmployeeComponent = () => {
   return (
     <div className="container">
       <h2 className="text-center">List of Employee</h2>
-      <button className="btn btn-primary" onClick={addNewEmployee}>
+      <button className="btn btn-primary mb-1" onClick={addNewEmployee}>
         Add Employee
       </button>
       <table className="table table-striped table-bordered table-responsive table-hover table-dark">
