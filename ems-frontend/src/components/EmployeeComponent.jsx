@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { createEmployee } from "../services/EmployeeService";
+import { useNavigate } from "react-router-dom";
 
 const EmployeeComponent = () => {
   const [firstName, setFirstName] = useState("");
@@ -20,10 +22,20 @@ const EmployeeComponent = () => {
   //     setPhone(e.target.value);
   //   };
 
+  const navigator = useNavigate();
+
   function saveEmployee(e) {
     e.preventDefault();
     const employee = { firstName, lastName, email, phone };
     console.log(employee);
+
+    createEmployee(employee).then((response) => {
+      console.log(response.data);
+      navigator("/employees");
+    });
+    // .catch((err) => {
+    //   console.log(err);
+    // });
   }
 
   return (
