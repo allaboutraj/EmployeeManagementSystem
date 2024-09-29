@@ -118,7 +118,7 @@ const EmployeeComponent = () => {
     if (id) {
       return <h2 className="text-center">Update Employee</h2>;
     } else {
-      <h2 className="text-center">Add Employee</h2>;
+      return <h2 className="text-center">Add Employee</h2>;
     }
   }
 
